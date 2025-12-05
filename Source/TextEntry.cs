@@ -31,7 +31,8 @@ namespace TaijiRandomizer
             bounds.extents = new(0.25F, 1);
             _sprite.bounds = bounds;
 
-            transform.set_localScale_Injected(new(0.01F, 0.45F, 1));
+            Vector3 v = new(0.01F, 0.45F, 1);
+            transform.set_localScale_Injected(ref v);
         }
 
         void Update()
@@ -62,7 +63,8 @@ namespace TaijiRandomizer
 
                     y = lineInfo.baseline + 0.2F;
 
-                    gameObject.transform.set_localPosition_Injected(new(x, y, 0));
+                    Vector3 v = new(x, y, 0);
+                    gameObject.transform.set_localPosition_Injected(ref v);
                 }
             }
             else

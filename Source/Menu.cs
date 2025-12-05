@@ -260,7 +260,8 @@ namespace TaijiRandomizer
                     label = GameObject.Instantiate(__instance.optionPrefab);
                     label.name = "RandomizerInfo";
                     label.transform.parent = menuItem.widgetObj.transform;
-                    label.transform.set_localPosition_Injected(new(0, 0, 2));
+                    Vector3 v = new Vector3(0, 0, 2);
+                    label.transform.set_localPosition_Injected(ref v);
 
                     RectTransform rectTransform = label.GetComponent<RectTransform>();
                     rectTransform.offsetMin = new(0, 0);

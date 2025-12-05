@@ -73,7 +73,7 @@ namespace TaijiRandomizer
             _gameObject = new("NewBinaryString");
             _gameObject.layer = LayerMask.NameToLayer("Colliders");
             _gameObject.transform.SetParent(GameObject.Find(parent).transform);
-            _gameObject.transform.set_position_Injected(position);
+            _gameObject.transform.set_position_Injected(ref position);
 
             SpriteRenderer bgSprite = _gameObject.AddComponent<SpriteRenderer>();
             bgSprite.sprite = _whiteFillSprite;
@@ -91,14 +91,14 @@ namespace TaijiRandomizer
             bgSprite.size = size;
             bgSprite.drawMode = SpriteDrawMode.Sliced;
 
-            _gameObject.transform.set_localScale_Injected(Vector3.one);
+            Vector3 v = Vector3.one;
+            _gameObject.transform.set_localScale_Injected(ref v);
         }
-
         public void AddString(Vector3 localPosition, bool reverse = false)
         {
             GameObject stringObject = new("BinaryString");
             stringObject.transform.SetParent(_gameObject.transform);
-            stringObject.transform.set_localPosition_Injected(localPosition);
+            stringObject.transform.set_localPosition_Injected(ref localPosition);
 
             BinaryString binaryString = stringObject.AddComponent<BinaryString>();
             binaryString.onesAndZeros = new(_length);
@@ -111,7 +111,8 @@ namespace TaijiRandomizer
             {
                 GameObject spriteObject = new($"sprite{i + 1}");
                 spriteObject.transform.parent = stringObject.transform;
-                spriteObject.transform.set_localPosition_Injected(new(0.5F * i, 0, 0));
+                Vector3 v = new Vector3(0.5F * i, 0, 0);
+                spriteObject.transform.set_localPosition_Injected(ref v);
                 spriteObject.layer = LayerMask.NameToLayer("Colliders");
 
                 SpriteRenderer spriteRenderer = spriteObject.AddComponent<SpriteRenderer>();
@@ -136,7 +137,7 @@ namespace TaijiRandomizer
         {
             GameObject spriteObject = new("dot");
             spriteObject.transform.parent = _gameObject.transform;
-            spriteObject.transform.set_localPosition_Injected(localPosition);
+            spriteObject.transform.set_localPosition_Injected(ref localPosition);
             spriteObject.layer = LayerMask.NameToLayer("Colliders");
 
             SpriteRenderer spriteRenderer = spriteObject.AddComponent<SpriteRenderer>();

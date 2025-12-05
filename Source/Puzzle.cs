@@ -232,7 +232,7 @@ namespace TaijiRandomizer
             {
                 GameObject basedOn = GameObject.Find("AreaRoot_BonusPuzzles/GraphicsRoot/BonusArea_FadeGroup/PuzzlePanel (232)");
                 newObject = GameObject.Instantiate(basedOn);
-                newObject.transform.set_position_Injected(position);
+                newObject.transform.set_position_Injected(ref position);
                 newObject.transform.parent = basedOn.transform.parent;
             }
             else

@@ -103,7 +103,8 @@ namespace TaijiRandomizer
                     GameObject newBlock = GameObject.Instantiate(templateToUse);
                     newBlock.name = $"TutorialBlock_{_id}_{x}_{y}";
                     newBlock.transform.parent = pillarBase.transform;
-                    newBlock.transform.set_localPosition_Injected(new(_firstX + x, _firstY + y, 0));
+                    Vector3 v = new Vector3(_firstX + x, _firstY + y, 0);
+                    newBlock.transform.set_localPosition_Injected(ref v);
                     newBlock.active = true;
                 }
             }
